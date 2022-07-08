@@ -1,0 +1,49 @@
+2020.11.24
+agenda:
+- Administration (B2, B3, C1 retake)
+
+  The date of C1 retake: 15th of December from 12:10 to 13:00 (50 minutes)
+  - communication with user (input/output)
+  - input data checking by specification
+  - your code should be matched to algorithm
+
+  The deadline of B3 assignment is 4th of December (10 days!)
+  There are 2 parts of B3 assignment
+  - First (that you have to upload till 4th of December)
+  -- don't have to communicate with users
+  -- don't have to check the input data
+  -- you have to creaet/use function
+
+  - The second part of B3 (needs till 11th of December)
+    Zsuzsa will specify the exact date and the exact task
+  -- you have to communicate with users
+  -- you have to check the input data
+  -- you have to create documentation (D1 assignment)
+  
+
+- Short quiz exercises regarding source code - done
+- Short quiz exercises regarding algorithm - done
+- Complex task processing - specification, algorithm, code
+
+Rain task
+- input data 
+  N - number of weeks
+  We need a 2 dimensions array Nx7
+  a) sequence calculation - N times => It can be ane amount at the end
+                                       but the specification requires N data
+     And we know the task b, and the input of task b require these N data
+     The temporary/work output => N numbers (one value per week)
+  b) maximum selection
+
+Input: N ϵ ℕ
+       X1..Nand1..7 ϵ ℕNX7 (2 dimensions array)
+Precondition: 2<=N<=1000
+              0<=Ri,j<=1000  (R means probably rain...)
+
+Output: SumRain 1..N ϵ ℕN
+        M ϵ ℕ  (number of week when the rain was increasing day by day)
+        IncWeek ϵ ℕM
+
+Postcondition a: Sum (it is not so easy...)
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root text="???" comment="sdsdsd" type="program" style="nice">
+ <children>
+
+<for text="i=1..N" comment="&#34;for loop&#34;" color="FFFFFF">
+ <qFor>
+
+<alternative text="Xa&#60;K" comment="" color="FFFFFF">
+ <qTrue>
+
+<instruction text="YES" comment="" color="FFFFFF" rotated="0"></instruction>
+ </qTrue>
+ <qFalse>
+
+<instruction text="NO" comment="" color="FFFFFF" rotated="0"></instruction>
+ </qFalse>
+</alternative>
+ </qFor>
+</for>
+ </children>
+</root>

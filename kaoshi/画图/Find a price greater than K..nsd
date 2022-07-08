@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root text="&#34;Find a price greater than K.&#34;" comment="" type="program" style="nice">
+ <children>
+
+<instruction text="Cnt:=0" comment="" color="C0C0C0" rotated="0"></instruction>
+<while text="i=1..N" comment="" color="C0C0C0">
+ <qWhile>
+
+<alternative text="X[i]&#62;K" comment="" color="FFFF80">
+ <qTrue>
+
+<instruction text="&#34;Cnt:=Cnt +1&#34;" comment="" color="FFFF80" rotated="0"></instruction>
+<instruction text="Priceval[cnt]:=X[i]" comment="" color="FFFF80" rotated="0"></instruction>
+ </qTrue>
+ <qFalse>
+
+<instruction text="-1" comment="" color="FFFF80" rotated="0"></instruction>
+ </qFalse>
+</alternative>
+ </qWhile>
+</while>
+ </children>
+</root>

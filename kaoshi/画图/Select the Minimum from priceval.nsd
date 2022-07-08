@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root text="&#34;Select the Minimum from priceval&#34;" comment="" type="program" style="nice">
+ <children>
+
+<instruction text="&#34;index:=1,Minpriceval:=Priceval[1]&#34;" comment="" color="FF8080" rotated="0"></instruction>
+<instruction text="i:=2..N" comment="" color="FF8080" rotated="0"></instruction>
+<alternative text="Peiceval(X[i])&#60;Priceva([X[index])" comment="" color="FFFF80">
+ <qTrue>
+
+<instruction text="index:=i" comment="" color="FFFF80" rotated="0"></instruction>
+<instruction text="Minpriceval:=Priceval(X[index])" comment="" color="FFFF80" rotated="0"></instruction>
+ </qTrue>
+ <qFalse>
+
+ </qFalse>
+</alternative>
+ </children>
+</root>
