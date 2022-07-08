@@ -1,0 +1,58 @@
+# Plaintexts: "BBBBB", "ccccc" (or longer versions)
+# Method: XOR with pseudorandom function's output
+# Key: uniformly random integer between 1 and 10000
+# (Pseudo)randomness: take powers of seed, Output 1 if  five previous bits digit: 0, 1, 2, 3, 4, output 0 if LAST digit is 5, 6, 7, 8, 9.
+
+
+# first make a One-time pad
+def encrypt_xor(plain, key):
+    n = min(len(plain), len(key))
+    ascii_codes = [ord(plain[i]) ^^ ord(key[i]) for i in range(n)]
+    return ''.join([chr(x) for x in ascii_codes])
+
+def rand_gen_ex1(seed, N):
+    return [1 if (seed^k)%5/10  else 0    for k in range(N)]
+
+def output_random_ciphertext_general(method):
+    m0 = "BBBBB"
+    m1 = "CCCCC"
+    plain = m0 if randint(0,1) == 0 else m1
+    seed = randint(1, 10000)
+    L = method(seed, len(plain)*8)
+    k = convert_binary_list_to_str(L)
+    return encrypt_xor(plain, k), plain
+
+def check_success_ratio(method_rand_gen, method_guess, N=1000):
+    ret = 0
+    for i in range(N):
+        c, m = output_random_ciphertext_general(method_rand_gen)
+        s = method_guess(c)
+        if s == m:
+            ret += 1
+    return ret
+def guess_ex2(s):
+    seed = 0
+    L = ["BBBBB", "CCCCC"]
+    finished = False
+    
+    while not finished:
+        L2 = rand_gen_ex2(seed, 64)
+        k = convert_binary_list_to_str(L2)
+        m = encrypt_xor(s, k)
+        if m in L:
+            finished = True
+        seed += 1
+    return m
+
+def stats_pos(method, pos):
+    cnt = 0
+    for k in range(10000):
+        L = method(k, pos+1)
+        if L[pos]:
+            cnt += 1
+    return cnt
+# "BBBBB" -> binary: [1,1,1,1,1]*5
+# "CCCCC" -> binary: [0,0,0,0,0]*5
+def guess_ex2_v2(s):
+    L = ["CCCCCC", "BBBBB"]
+    return L[ ord(s[3]) % 2]

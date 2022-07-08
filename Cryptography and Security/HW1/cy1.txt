@@ -1,0 +1,84 @@
+def indexofletter(c):
+    return ord(c) - 65
+
+def letterwithindex(i):
+    return chr(i + 65)
+
+def shiftchar(c,shift):
+    i = indexofletter(c)
+    new = ( i+ shift) % 26
+    return letterwithindex(new)
+def shiftCipher(s,k):
+    ret = ""
+    for c in s:
+        ret += shiftChar(c,k)
+    return ret
+def vigenere(s,shiftlist):
+    ret = ""
+    pos = 0
+    for c in s :
+        new = shiftchar(c,shiftlist[pos])
+        ret += new
+        pos += 1
+    return ret
+L=[1,2,3]
+vigenere("DOG",L)
+'EQJ'
+#1.
+def repetitionsInString(s,length=3):
+    n = len(s)
+    ret = [(i,j) for i in range(0, n-length) for j in range(i+1,n-length+1) if s[i:(i+length)]==s[j:(j+length)]]
+    return ret
+s = "YCBBONZZMLOWKIEDFAZYCBBONP"
+repetitionsInString(s)
+[(0, 19), (1, 20), (2, 21), (3, 22)]
+#2.
+def guessedKeyLength(ciphertext,length = 3):
+    difference =[j - i for (i , j) in repetitionsInString(ciphertext,length)]
+    return gcd(difference)
+m = "YCBBONZMRZPUMCKTGPISWZAIMJNFJTYPOZGZQUUMMAFKMYJSQGFYFOAGIIZMLOWKIEDFAZP"
+[i for i in range(len(m)-2) if m[i:(i+3)] == 'YCB']
+[0]
+ 
+s = "YCBBONZMRZPUMCKTGPISWZAIMJNFJTYPOZGZQUUMMAFKMYJSQGFYFOAGIIZMLOWKIEDFAZP\
+UMFVBMRSEYTEZXZBKZGKBEZDTFBQNETFKZRXSQGFAAMPYAFPIYSELAVBFJYHTSQGFNWTTBYU\
+SZPUMZZPUMLMZKAVHYDFCBPCQZMYNHHMZEFZFFYRMTQPELPYJFZWGAQLHYUFHITLAHMYUHNM\
+YKGQHRAAWYYUWZEYTCMGPGPNFLJFZACDFRMNAKZFYILEFLZEOPYIWZSOKPTMBAWZHFAAAMCA\
+KMDSHCKZPUMFADALRMKAZZZPUMCMYYITINGOEAHXHXPVGGIMDCFWXMCFGWYASVAPAMFJNAHI\
+EUMFZWOYWWMKAUMDSHQOFLKMKZPUMYSXASMLYNWTTEBFBACFLCEKAFCFASSQGFQOBKJPERRR\
+ZSZVYCOMQBDQZU"
+guessedKeyLength(s,5)
+5
+c_at_multiples_of_5 = [s[5*k] for k in range(0, 445/5)]
+Set(c_at_multiples_of_5)
+{'X', 'G', 'E', 'J', 'K', 'W', 'M', 'V', 'Y', 'Q', 'P', 'T', 'B', 'U', 'H', 'F', 'O', 'C', 'Z', 'N', 'L', 'D', 'A', 'S', 'R'}
+{x:c_at_multiples_of_5.count(x) for x in 'RPOHUNKLVFGEQYXWSZMTJIABD'}
+{'R': 3,
+ 'P': 10,
+ 'O': 2,
+ 'H': 2,
+ 'U': 1,
+ 'N': 4,
+ 'K': 4,
+ 'L': 4,
+ 'V': 2,
+ 'F': 6,
+ 'G': 2,
+ 'E': 3,
+ 'Q': 1,
+ 'Y': 20,
+ 'X': 1,
+ 'W': 1,
+ 'S': 2,
+ 'Z': 4,
+ 'M': 2,
+ 'T': 3,
+ 'J': 2,
+ 'I': 0,
+ 'A': 1,
+ 'B': 4,
+ 'D': 2}
+c_at_multiples_of_5 = [s[5*k+1] for k in range(0, 445/5)]
+c_at_multiples_of_5 = [s[5*k+2] for k in range(0, 445/5)]
+c_at_multiples_of_5 = [s[5*k+3] for k in range(0, 445/5)]
+c_at_multiples_of_5 = [s[5*k+4] for k in range(0, 445/5)]

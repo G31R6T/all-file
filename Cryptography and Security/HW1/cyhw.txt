@@ -1,0 +1,60 @@
+def indexOfLetter(c):
+    return ord(c) - 65
+def letterWithIndex(i):
+    return chr(i+65)
+def shiftChar(c,shift):
+    i = indexOfLetter(c)
+    if i == (-33):
+        new = (-33)
+    if i > 25:
+        new = (i + shift)% 58
+    if i <= 25 and i != (-33):
+        new = (i + shift) % 26    
+    return letterWithIndex(new)
+	
+def shiftCipher(s,k):
+    ret = ""
+    for c in s:
+        ret += shiftChar(c,k)
+    return ret
+	
+def vigenere(s,shiftList):
+    ret = ""
+    # Current position in the shiftList
+    pos = 0
+    n = len(shiftList)
+    for c in s:
+        new = shiftChar(c,shiftList[pos])
+        ret += new
+        #Add one, restart if  list is over
+        pos = (pos + 1) % n
+    return ret
+	
+def repetitionsInString(s,length=3):
+    n = len(s)
+    ret = [(i,j) for i in range(0, n-length) for j in range(i+1,n-length+1) if s[i:(i+length)]==s[j:(j+length)]]
+    return ret
+
+def guessedKeyLength(ciphertext,length=3):
+    differences = [j-i for (i,j) in repetitionsInString(ciphertext,length)]
+    return gcd(differences)
+	
+# step 1
+s = "YCBBONZMRZPUMCKTGPISWZAIMJNFJTYPOZGZQUUMMAFKMYJSQGFYFOAGIIZMLOWKIEDFAZP\
+UMFVBMRSEYTEZXZBKZGKBEZDTFBQNETFKZRXSQGFAAMPYAFPIYSELAVBFJYHTSQGFNWTTBYU\
+SZPUMZZPUMLMZKAVHYDFCBPCQZMYNHHMZEFZFFYRMTQPELPYJFZWGAQLHYUFHITLAHMYUHNM\
+YKGQHRAAWYYUWZEYTCMGPGPNFLJFZACDFRMNAKZFYILEFLZEOPYIWZSOKPTMBAWZHFAAAMCA\
+KMDSHCKZPUMFADALRMKAZZZPUMCMYYITINGOEAHXHXPVGGIMDCFWXMCFGWYASVAPAMFJNAHI\
+EUMFZWOYWWMKAUMDSHQOFLKMKZPUMYSXASMLYNWTTEBFBACFLCEKAFCFASSQGFQOBKJPERRR\
+ZSZVYCOMQBDQZU"
+guessedKeyLength(s,5)
+#get 5 which is the length of the KEY
+# step 2
+c_at_multiples_of_5 = [s[5*k] for k in range(0, 445/5)]
+Set(c_at_multiples_of_5)
+{x:c_at_multiples_of_5.count(x) for x in 'RPOHUNKLVFGEQYXWSZMTJIABD'}
+#get the first key
+#c_at_multiples_of_5 = [s[5*k+1] for k in range(0, 445/5)]
+#c_at_multiples_of_5 = [s[5*k+2] for k in range(0, 445/5)]
+#c_at_multiples_of_5 = [s[5*k+3] for k in range(0, 445/5)]
+#c_at_multiples_of_5 = [s[5*k+4] for k in range(0, 445/5)]
