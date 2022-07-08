@@ -1,0 +1,12 @@
+Version: 1.5
+MainModule
+	Name:	PT4
+	Dir:	{Project}
+	DclOpen:	False
+	Icl
+		WindowPosition
+			X:	1
+			Y:	169
+			SizeX:	851
+			SizeY:	640
+	IclOpen:	True

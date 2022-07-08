@@ -1,0 +1,12 @@
+Version: 1.5
+MainModule
+	Name:	ex16
+	Dir:	{Project}
+	DclOpen:	False
+	Icl
+		WindowPosition
+			X:	57
+			Y:	195
+			SizeX:	800
+			SizeY:	640
+	IclOpen:	False

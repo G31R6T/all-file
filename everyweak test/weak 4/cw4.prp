@@ -1,0 +1,6 @@
+Version: 1.5
+MainModule
+	Name:	cw4
+	Dir:	{Project}
+	DclOpen:	False
+	IclOpen:	True
