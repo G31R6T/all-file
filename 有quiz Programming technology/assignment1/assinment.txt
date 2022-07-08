@@ -1,0 +1,43 @@
+Name:Li zhipeng   Neptun code:G31R6T   assignment 1: 2 
+
+This is an experiment to simulate plant growth factors:
+Requirements:
+Simulate the behaviors of the plants, and print out the radiation of the day and the properties 
+of the plants on each day.
+
+If a plant runs out of its nutrients, it dies.
+and other living.
+
+Each day:
+alpha , delta, or no radiation
+
+The reaction:
+it changes its nutrient level, and affects the radiation of the next day.
+
+a. 3 <= alpha
+b. 3 <=delta
+c. no radiation.
+
+
+
+Properties of the plants: 
+name (string), nutrients (integer), living (boolean).
+
+ The types of the plants : puffs, deltatree, parabush.
+( Different plants correspond to different radiations and have different effects ).
+
+
+A possible file content:
+4 (The first line contains the number (n) of the plants.)
+Piggy (name)  p(type)  7( initial nutrient level)
+Slender  d    5
+Dumpy   b   4
+Willowy  d   3
+10(Days)
+
+The program should ask for the name of the file, 
+ and it has to print out the name of the survivors
+(we can assume that the file is existing and its format is valid).
+
+
+
