@@ -1,0 +1,40 @@
+The task is to write a sorting algorithm for a maximum of 15 points. It has a simpler and slower and a more complex but in exchange faster version. To get all the 15 points it is sufficient to program the faster one. In this case use this faster algorithm to test the slower one as well. For a reduced amount of points you may solve the simpler assignment or you can enhance this one instead of staring the faster one from scratch.
+
+You can test your solutions using the file `Tester.java`. The class in this file takes the length of the array to be sorted and generates an array of this length filled with pseudo-random numbers. The it sorts this array with `Arrays.sort()` and the sorting algorithms of both versions of the assignment. Then it prints the running times to the console. Using the flag `-ea` the verifications at the end of the file are executed as well to check the correctness of the algorithms. Thus using class `Tester` we can check both the efficiency and the correctness of the sorting algorithms.
+
+You have to write your code into classes `Task1.java` and `Task2.java`. Feel free to add new files and `package` information whenever you need them.
+
+
+Task1 – basic multi-threaded merge sort
+Method `Arrays.sort()` is fast but not enough. Since it uses only one thread making it multi-threaded seems to be the most straightforward solution to increase its performance. To do it start with writing to utility method.
+
+First of all let us think how to decompose the task to smaller subtasks. Since we are intending to sort a large array it seems straightforward to slice it. Write a method `int[][] slice(int[] arr, int k)` which slices an array to `k` pieces.
+
+Now we can sort the individual small arrays using multiple threads. The questions is how to merge them after the sort. For this write a method `int[] merge(int[] arr1, int[] arr2)` which does only the merge part of the well known merge sort.
+
+After writing the methods for slicing and merging the only method left is `int[] sort(int[] array)` itself. This is easy using the already written methods. Using `Runtime.getRuntime().availableProcessors()` we can query the supported number of physical threads so we can slice the arrays to this many parts and sort them concurrently in separate threads. When we are done with this, create and empty array and using a `for` loop merge the sorted mini-arrays into it. We are done :)
+
+
+Task2 – optimized parallel merge sort
+The algorithm specified in the previous assignment is faster in almost all x86-64 based computer than `Arrays.sort()` alone. However we can still enhance it a lot. First of all, slicing is totally unnecessary because its length does not change during the sort so we just need the indices of the interval to sort the parts independently of each other. Although there are in-place sorting algorithms it is faster to move the elements to a new place. To achieve this we do not need to split the original array and there is no need to allocate newer and newer memory areas during the execution of the program.
+
+It is enough to create 2 arrays of the same size as the array to sort, at the beginning of the program. Copy the elements of the array to sort into the first one and fill the second one with zeroes (or any other values). After this initialization step there is no need to create additional arrays. For the smaller arrays we will use a reference to the whole array plus two indices which determine the range. Since there is absolutely no overlap between these mini-arrays we will ot need any synchronization to work on them using separate threads. Do not forget that synchronization is not or friend but our foe because overusing synchronization slows down our algorithm. Ideally, we can create a synchronization-free program that works correctly.
+
+We can also gain a lot if we do not only parallelize the sort of the mini-arrays but the merge as well. To do this we should dump the parts of the previous assignment where we start the threads and restart it from scratch. Ideally, we would only need one single merge in `main`. However, to do this we must split the array to 2 fixed parts. Please note that this is not a real split, we only use an index to mark the start of the second mini-array within the large array. When we are done with this, create a twin-thread which sorts one half of the array while we sort the other half. After our thread is done we must wait the other thread using `Thread.join()` and do a single merge.
+
+Two questions emerge here. The first one is how to merge the arrays. The answer is simple: we must always use the indices from the original array before the start of the twin-thread. This one is the array to sort and the two halves are the sorted mini-arrays. The two mini-arrays are in one of the 2 arrays which we allocated at the beginning of the program. During the merge we copy them to the other array between the same begin- and end-indices. The merge itself is the same as in the first assignment, buth with some tricks using the indices to prevent creation of additional arrays.
+
+The other good question is how to use arbitrary number of threads if we only create a single twin-thread. The answer is simple: recursion. Both in the original and in the twin-thread we call a recursive method which splits the array until we have as many mini-arrays as many processors we do have. After we achieved this number we simply sort the individual mini-arrays using `Arrays.sort()`.
+
+With the continuous recursive splits we actually build the binary three of the merge-sort. All internal nodes of the tree creates a sibling (another thread) which continues in one of the children while the original thread continues on the other one. After it finishes its own part of the tree it awaits its sibling, merges the two sorted arrays and steps up to its parent. Here, if it was a sibling-thread it terminates. If it was the creator thread, it does the merge and steps up again. The leafs call the method `Arrays.sort()` while the internal nodes are the merges. Since the merges are parallel as well so the algorithm scales well even in the case where big arrays are split to many mini-arrays.
+
+Remark: the binary tree does not appear explicitly in the program, it is just the behavior of the recursion. The binary tree of the merge sort is just an interpretation or abstraction of the recursive Java program.
+
+Unfortunately, the continuous copies between the two arrays can be confusing in the sense that we have to take special care not to mistake the final, fully sorted and merged array with the other one. The trivial case is where the binary tree consists only of its root node. Every additional level means one more copy between the rwo arrays, thus the parity of the depth of the recursion determines the array to return at the end of the algorithm. The parity may be calculated in the thread doing the sort, just before the multi-threaded recursion or alternatively we can keep track of it during the recursion, e.g. using a return value we can propagate it as a logical value up to the top of the binary tree.
+
+
+
+
+Help: the optimal depth can be quite easily calculated beforehand. To do this we must consider both the number of physical threads on the current architecture and the length of the array. We intend to use at least as many threads as supported on the hardware but extremely small arrays (let us say no more than `1000` elements) should be sorted in place without splitting.
+
+If we know the depth, we do not have anything else to do but call the recursive function with this value which decreases it by one on every recursive invocation. If the depth is zero then it does not do any more recursion by sorts the array using `Arrays.sort()`.
