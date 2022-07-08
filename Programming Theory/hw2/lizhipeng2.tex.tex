@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin2]{inputenc}
+\usepackage[english]{babel}
+\usepackage{palatino}
+\usepackage{amsmath}   
+\usepackage{amssymb}
+\usepackage{mathtools}
+\setlength{\parindent}{0pt}
+\usepackage[left=2.5cm,right=2.5cm,top=4cm,bottom=4cm]{geometry}
+
+\begin{document}
+\author{Lizhipeng}
+
+\begin{center}
+{\Large Homework 2}
+\end{center}
+\bigskip
+
+Let $A=\left[1..6\right]$ be a statespace, $S\subseteq A \times (\bar{A}\cup\{fail\})^{**}$ a program over the statespace $A$.
+\[
+S = \begin{Bmatrix*}[l]
+1\rightarrow<1,2,5,1> & 2\rightarrow<2,4,3,5,6> & 2\rightarrow<2,2,2,\ldots>\\
+3\rightarrow<3,1> & 3\rightarrow<3,2,4> & 3\rightarrow<3,5,2,4,1>\\
+4\rightarrow<4,1,fail> & 5\rightarrow<5,3,2,4> & 5\rightarrow<5,3,6,1>\\
+6\rightarrow<6,1,4> & 6\rightarrow<6,1,fail> & \\
+\end{Bmatrix*}
+\]
+
+Let $F\subseteq A \times A$ denote the following problem: $F=\left\{\,(1,1),(3,4),(3,1),(5,1),(5,2),(5,4)\,\right\}$\\
+\bigskip
+
+\textbf{Question}\\ 
+Let $S_1$ and $S_2$ be programs, let $F_1$ and $F_2$ be problems over the same statespace.\\
+Statement1: if $S_1$ solves $F_1$ and $F_1 \subseteq F_2$ then $S_1$ solves $F_2$.\\
+Statement2: if $S_1$ solves $F_1$ and $F_2 \subseteq F_1$ then $S_1$ solves $F_2$.\\
+Statement3: if $S_1$ solves $F_1$ and $S_1 \subseteq S_2$ then $S_2$ solves $F_1$.\\
+Statement4: if $S_1$ solves $F_1$ and $S_2 \subseteq S_1$ then $S_2$ solves $F_1$.\\
+
+Informally, for example, Statement4 says that if a program $S_1$ solves a given problem $F_1$ then a smaller program $S_2$ also solves the same problem $F_1$. Interestingly, only this fourth statement is true out of the four statements.\\
+
+Your task is to find a counter-example for Statement3.\\
+More precisely: consider the program $S$ and problem $F$ given above in this exercise. Find a program $S_2$ such that $S \subseteq S_2$ and $S_2$ does not solve $F$. Explain why your $S_2$ program does not solve $F$.\\
+\textbf{Answer}\\
+Here is the $S_2$ that has subset S and it does not Solve the F.
+\[
+S_2 = \begin{Bmatrix*}[l]
+1\rightarrow<1,2,5,1> & 2\rightarrow<2,4,3,5,6> & 2\rightarrow<2,2,2,\ldots>\\
+3\rightarrow<3,1> & 3\rightarrow<3,2,4> & 3\rightarrow<3,5,2,4,fail>\\
+4\rightarrow<4,1,fail> & 5\rightarrow<5,3,2,4> & 5\rightarrow<5,3,6,1>\\
+6\rightarrow<6,1,4> & 6\rightarrow<6,1,fail> & \\
+\end{Bmatrix*}
+\]
+So it does not Satisfy the Condition So it $S_2$ does not Solve the $F_1$
+
+\rule{\textwidth}{0.4pt}
+\textbf{Recall}\\
+$S$ program solves problem $F$ if
+\begin{enumerate}
+	\item $\mathcal{D}_F \subseteq \mathcal{D}_{P[S]}$
+	\item $\forall a \in \mathcal{D}_F\colon P[S](a) \subseteq F(a)$
+\end{enumerate}  		
+\end{document}
