@@ -1,0 +1,12 @@
+Version: 1.5
+MainModule
+	Name:	homeWork_8_v_4
+	Dir:	{Project}
+	DclOpen:	False
+	Icl
+		WindowPosition
+			X:	354
+			Y:	61
+			SizeX:	800
+			SizeY:	640
+	IclOpen:	True
