@@ -1,0 +1,30 @@
+Paper-based midterm sample:
+
+
+A1
+
+Daily maximums of seismograph measurements are stored in a sequential input file (positive real numbers).
+地震仪的每日最大测量值存储在顺序输入文件中（正实数）。
+     According to Richter’s magnitude scale, a measurement is considered an earthquake if it is larger than 3. 
+     根据Richter的震级标度，如果测量值大于3，则将其视为地震。
+    We can assume that the seismograph has measured several earthquakes already.
+     我们可以假设地震仪已经测量了几次地震。
+
+How many days have passed between the first two earthquakes, according to the file?
+    文件显示，前两次地震之间相隔了几天？
+
+
+
+
+
+A2
+
+Lufthansa has published statistical data in a sequential input file: 
+        汉莎航空已在顺序输入文件中发布了统计数据：
+         date (string), flight number (string), passenger capacity (natural number), number of passengers (natural number).
+           The file is ordered by date.
+          日期（字符串），航班号（字符串），载客量（自然数），乘客人数（自然数）。
+            该文件按日期排序。
+
+Was there a day where the total number of unoccupied seats exceeded 10.000?
+是否有一天空座位总数超过10.000？

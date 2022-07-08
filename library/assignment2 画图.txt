@@ -1,0 +1,37 @@
+
+
+task:
+5. At   every   competition   of   the   National   AnglingChampionship,
+the   results   of   the competitors were recorded and put into a text file.
+Every line of the file contains the name of  the  angler  the  ID  of  the  competition(string  without  spaces), 
+and  the speciesand  the size  of  the  caught  fishes(pair  of  a  string  without  spaces  and  a  natural  number).
+Data  is separatedby space  or  tab.  The  lines  of  the  file  are  ordered  by contest  ID.
+The  file  is assumed to be in the correct form. Sample line in the file:PeterLAC0512 carp45 carp53 catfish96
+
+
+(1) Is  there  an  angler  who  has  caught  only and  at  least  three catfishes  on  one  of  his contests? Give the contest ID, too.
+(2) How  many  conteststhere  are  where  at  least  one  angler  has  caught  only  and  at  least three catfishes?
+
+1) First partPlan of the main program:A = (f : infile(Line), l : 𝕃, elem: Contest)
+Line= rec (angler: String, contest: String, catches: Catch*)
+Catch= rec (species: String, size: ℕ)
+Contest =rec(angler: String, contest: String, counter: ℕ
+
+New state space:
+A = (t : enor(Contest), l : 𝕃, elem: Contest)
+Pre=( t = t’)
+Post=( 𝑙,𝑒𝑙𝑒𝑚=𝑺𝑬𝑨𝑹𝑪𝑯𝑒∈𝑡′(𝑒.𝑐𝑜𝑢𝑛𝑡𝑒𝑟≥3))
+          l  :=false;  t.first()
+           l t.end()
+l, elem:= t.current().counter≥3, t.current()
+            t.next()
+
+Analogy: linearsearch, custom enumerator
+E             ~ Contest
+cond(e)   ~ e.counter≥3
+
+Enumerator of Contests:
+enor(Contest)first(), next(), current(), end()f : infile(Line)first()~ next()cur: Contestnext()~ see belowend: 𝕃current()~ return curend()~ return endStatus= { norm, abnorm }Inenor(Contest), operationsfirst()andnext()are the same.They have to solve the following task: read the next line of the textfile(f sequentialinputfile). If there is no more, then vaiable end gets true. If there is any, the current angler’sname and the contest ID can be extracted. Then, the ”catfish”species can be counted in the catches..Anext= (f: infile(Line),cur : Contest,end:𝕃)Prenext= (f = f’)Postnext= ( sf, df, f = read(f’)end=(sf=abnorm)end→cur.angler= df.anglercur.contest= df.contestcur.counter=  ∑1𝑖∈[1..|𝑑𝑓.𝑐𝑎𝑡𝑐ℎ𝑒𝑠|]𝑑𝑓.𝑐𝑎𝑡𝑐ℎ𝑒𝑠[𝑖].𝑠𝑝𝑒𝑐𝑖𝑒𝑠="𝑐𝑎𝑡𝑓𝑖𝑠ℎ")sf, df, f : readend := sf=abnormendcur.angler,  cur.contest:= df.angler, df.contestcur.counter:= 0SKIPi = 1 .. ∣df.catches∣df.catches[i].species= ”catfish”cur.counter:= cur.counter+ 1SKIPAnalogy: counting, on interval enumeratort:[m .. n ]~ i : [1.. |df.catches|]cond(i)~ df.catches[i].species=”catfish”c~cur.counter
+
+
+
