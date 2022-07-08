@@ -1,0 +1,89 @@
+1. The real and extended real numbers
+2. Bounded and unbounded sets. Sup, inf, max, min of sets, and their various characterizations
+
+3. The triangle inequalities. Means: arithmetic, geometric, harmonic means, the root mean square. The binomial theorem
+    》 2.
+
+4. Real functions, domain, range, invertibility, inverse, composition
+
+5. Sequences. Subsequences  9. Monotonicity, boundedness, convergence, divergence, and the relationship among these concepts. Examples
+  Theorem about the convergence of geometric sequences
+Theorem about the convergence of geometric sequences   》20
+ Theorem about the convergence of√n a and of√n n  》21
+
+》 23
+
+15. The theorem about the Comparison Tests (Major Test, Minor Test
+》44
+  
+define the monotinic sequences  
+ >24
+ 
+Theorem about the convergence of a monotonically increasing sequence
+   》25
+
+Theorem about the convergence of a monotonically decreasing sequence
+  》26
+
+is convergent and define the Euler’s number e
+ 》27
+
+
+6. The definition of sequence limit in the extended sense
+
+7. Arithmetic operations and limits, the extension of the arithmetic operations to the extended reals
+
+
+7.State the five theorems (Th1-Th5) in connection with zero sequences
+  》16
+
+8. Ordering and limits. Limits of monotone sequences. The sandwich theorem 三明治理论
+   》18
+
+9.State the Zero-sequence Test
+   》42
+
+9. Cauchy sequences and convergence
+   》30。31
+
+10. The Bolzano--Weierstrass theorem
+   》29 
+
+11. Infinite series. Partial sums. Convergence and divergence
+   》 38.39.40
+
+12. Geometric series, harmonic series and their convergence/divergence. Telescopic summation
+   》 41
+
+13. Tests for convergence: a necessary condition for convergence. Absolute convergence. Alternating series. 》 51The ratio test.  》50The root test.
+  》 47  48.49.50
+
+14. Cauchy product of series, sum of the Cauchy product
+ 》  52 .53
+
+15. Power series, set of convergence, radius of convergence. Examples
+》  54  55 56  57
+
+16. Analytic functions: the definition of exp, cos, sin, cosh, sinh together with the radius of convergence
+》62.63
+
+17. Various definitions of the number e (sequence limits/infinite series)
+》 68  . 70
+
+17.Define the monotonically increasing and the monotonically decreasing function
+》 76
+
+18. Inverse trigonometric and inverse hyperbolic functions (including arctan and artanh) --- domains, ranges, graphs, monotonicity
+
+
+18. The proof of exp(x+y)=exp(x)exp(y). The proof of Euler's》 27 formula
+》 64
+
+19. The relation between cos, sin and the complex exponential function. The trigonometric and hyperbolic Pythagorean theorems with proofs. 
+     The proofs of the multiple angle formulae cos(2x) and sin(2x)
+》   64.65.66.67
+
+20. Neighborhoods of real and extended real numbers. Accumulation points and isolated points of sets
+》68. 69
+
+21. The definition of the limit of a real function. 9 special cases (with quantifiers and examples)
