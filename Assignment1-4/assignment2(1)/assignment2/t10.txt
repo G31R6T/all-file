@@ -1,0 +1,6 @@
+Peter Kiliti0512 carp 45 carp 53 catfish 96
+Bob Kiliti0512 carp 45 carp 53 catfish 96
+Peter Szeged0820 catfish 45 catfish 53 carp 96
+Bob Szeged0820 carp 45 carp 53 catfish 96
+Peter Gesztes0906 carp 45 catfish 53 catfish 96
+
